@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from '../../assets/logo.svg'
 const NavBar = () => {
-    const links = <>
-    <li><Link to={'/'}>Home</Link></li>
-    <li><Link to={'/login'}>Login</Link></li>
-    </>
+    const links =
+        <>
+            <li><Link to={'/'}>Home</Link></li>
+            <li><Link to={'/login'}>Login</Link></li>
+        </>
     return (
         <div>
             <div className="navbar mb-3 px-0 bg-base-100">
