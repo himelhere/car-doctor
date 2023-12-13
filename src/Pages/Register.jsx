@@ -2,7 +2,8 @@ import NavBar from "../Shared/NavBar";
 import loginImg from "../../assets/images/login/login.svg"
 import { Link } from "react-router-dom";
 
-const Login = () => {
+
+const Register = () => {
     return (
         <div>
             <NavBar></NavBar>
@@ -14,7 +15,13 @@ const Login = () => {
                     <div>
                         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                             <form className="card-body">
-                                <h1 className="text-3xl font-bold">Please Login</h1>
+                                <h1 className="text-3xl font-bold">Please register</h1>
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name="name" placeholder="email" className="input input-bordered" required />
+                                </div>
                                 <div className="form-control">
                                     <label className="label">
                                         <span className="label-text">Email</span>
@@ -33,9 +40,9 @@ const Login = () => {
                                 </div>
                                 <h1>Login with <button className="text-blue-600 font-bold">Google</button></h1>
                             </form>
-                            
+
                         </div>
-                        <h1 className="my-4">New here? Please <Link className="text-blue-600 font-bold" to={'/register'}>Registration</Link></h1>
+                        <h1 className="my-4">Already have account? Please <Link className="text-blue-600 font-bold" to={'/login'}>Login</Link></h1>
                     </div>
                 </div>
             </div>
@@ -43,4 +50,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
