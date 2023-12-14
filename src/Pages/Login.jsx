@@ -1,8 +1,26 @@
 import NavBar from "../Shared/NavBar";
 import loginImg from "../../assets/images/login/login.svg"
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../Components/Provider/AuthProvider";
 
 const Login = () => {
+    const { signIn } = useContext(AuthContext);
+    const handleSignIn = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                alert('Sign in successfully');
+
+            })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <NavBar></NavBar>
@@ -13,7 +31,7 @@ const Login = () => {
                     </div>
                     <div>
                         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                            <form className="card-body">
+                            <form onSubmit={handleSignIn} className="card-body">
                                 <h1 className="text-3xl font-bold">Please Login</h1>
                                 <div className="form-control">
                                     <label className="label">
@@ -33,7 +51,7 @@ const Login = () => {
                                 </div>
                                 <h1>Login with <button className="text-blue-600 font-bold">Google</button></h1>
                             </form>
-                            
+
                         </div>
                         <h1 className="my-4">New here? Please <Link className="text-blue-600 font-bold" to={'/register'}>Registration</Link></h1>
                     </div>
