@@ -1,11 +1,15 @@
 import NavBar from "../Shared/NavBar";
 import loginImg from "../../assets/images/login/login.svg"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Components/Provider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
+    const location = useLocation();
+    // console.log(location);
+    const navigate = useNavigate();
     const handleSignIn = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,8 +18,11 @@ const Login = () => {
         console.log(email, password);
         signIn(email, password)
             .then(result => {
-                const user = result.user;
-                console.log(user);
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                navigate(location?.state ? location?.state : '/')
+                
+
                 alert('Sign in successfully');
 
             })

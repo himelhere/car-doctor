@@ -4,6 +4,8 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Booking from "../Pages/Booking";
+import Bookmark from "../Pages/Bookmark";
+import PrivateRoute from "../Components/Private.jsx/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -24,8 +26,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/booking/:id',
-                element: <Booking></Booking>,
+                element: <PrivateRoute><Booking></Booking></PrivateRoute>,
                 loader: ({params})=> fetch(`http://localhost:5000/services/${params.id}`)
+            },
+            {
+                path: '/bookmark',
+                element: <PrivateRoute><Bookmark></Bookmark></PrivateRoute>
             }
         ]
     },
